@@ -1,8 +1,10 @@
-require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
+
+const authRoutes = require("./routes/auth.routes");
+const globalErrorHandler = require("./controllers/error.controller");
 
 // MIDDLEWARES
 app.use(express.json());
@@ -21,5 +23,11 @@ app.use(
         credentials: true,
     })
 );
+
+// ROUTES
+app.use("/api/v1/auth", authRoutes);
+
+// ERROR HANDLING MIDDLEWARE
+app.use(globalErrorHandler);
 
 module.exports = app;
