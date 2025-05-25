@@ -6,6 +6,8 @@ const app = express();
 const authRoutes = require("./routes/auth.routes");
 const featureRoutes = require("./routes/feature.routes");
 const addressRoutes = require("./routes/address.routes");
+const productRoutes = require("./routes/product.routes");
+const reviewRoutes = require("./routes/review.routes");
 const globalErrorHandler = require("./controllers/error.controller");
 
 // MIDDLEWARES
@@ -30,6 +32,7 @@ app.use(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/feature", featureRoutes);
 app.use("/api/v1/address", addressRoutes);
+app.use("/api/v1/reviews", reviewRoutes);
 
 // ERROR HANDLING MIDDLEWARE
 app.use(globalErrorHandler);
