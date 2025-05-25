@@ -22,6 +22,7 @@ const addressSchema = new mongoose.Schema(
         state: {
             type: String,
             trim: true,
+            required: [true, "State is required"],
             maxlength: [50, "State cannot exceed 50 characters"],
         },
         country: {
@@ -42,6 +43,7 @@ const addressSchema = new mongoose.Schema(
         notes: {
             type: String,
             trim: true,
+            required: true,
             maxlength: [200, "Notes cannot exceed 200 characters"],
         },
         isDefault: {

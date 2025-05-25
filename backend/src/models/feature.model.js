@@ -25,4 +25,5 @@ const FeatureSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model("Feature", FeatureSchema);
+const Feature = mongoose.model("Feature", FeatureSchema);
+module.exports = Feature;
