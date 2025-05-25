@@ -9,6 +9,8 @@ const addressRoutes = require("./routes/address.routes");
 const productRoutes = require("./routes/product.routes");
 const reviewRoutes = require("./routes/review.routes");
 const globalErrorHandler = require("./controllers/error.controller");
+const { upload } = require("./middlewares/multer");
+const { cloudinary } = require("./lib/cloudinary");
 
 // MIDDLEWARES
 app.use(express.json());
@@ -33,6 +35,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/feature", featureRoutes);
 app.use("/api/v1/address", addressRoutes);
 app.use("/api/v1/reviews", reviewRoutes);
+app.use("/api/v1/products", productRoutes);
 
 // ERROR HANDLING MIDDLEWARE
 app.use(globalErrorHandler);
