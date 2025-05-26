@@ -5,7 +5,9 @@ const { addressSchema } = require("../utils/zod/address.schema");
 const handleZodError = require("../utils/zod/zodError");
 
 exports.addAddress = catchAsync(async function (req, res, next) {
-    const data = handleZodError(req, addressSchema);
+    const data = handleZodError(req, next, addressSchema);
+    if (!data) return;
+
     const newAddress = await Address.create(data);
     res.status(201).json({
         status: "success",

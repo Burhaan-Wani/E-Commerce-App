@@ -11,6 +11,6 @@ const router = express.Router();
 router.use(authMiddleware);
 router.get("/get", getFilteredProducts);
 router.get("/get/:id", getProductDetails);
-router.get("/:keyword", getSearchProducts);
+router.get("/search/:keyword", getSearchProducts);
 
 module.exports = router;

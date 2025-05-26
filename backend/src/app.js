@@ -8,9 +8,8 @@ const featureRoutes = require("./routes/feature.routes");
 const addressRoutes = require("./routes/address.routes");
 const productRoutes = require("./routes/product.routes");
 const reviewRoutes = require("./routes/review.routes");
+const adminRoutes = require("./routes/admin.routes");
 const globalErrorHandler = require("./controllers/error.controller");
-const { upload } = require("./middlewares/multer");
-const { cloudinary } = require("./lib/cloudinary");
 
 // MIDDLEWARES
 app.use(express.json());
@@ -36,6 +35,7 @@ app.use("/api/v1/feature", featureRoutes);
 app.use("/api/v1/address", addressRoutes);
 app.use("/api/v1/reviews", reviewRoutes);
 app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/admin/products", adminRoutes);
 
 // ERROR HANDLING MIDDLEWARE
 app.use(globalErrorHandler);

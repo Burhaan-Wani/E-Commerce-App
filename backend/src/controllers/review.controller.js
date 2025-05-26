@@ -7,11 +7,10 @@ const { reviewSchema } = require("../utils/zod/review.schema");
 const handleZodError = require("../utils/zod/zodError");
 
 exports.addProductReview = catchAsync(async function (req, res, next) {
-    const { userId, productId, reviewMessage, reviewValue } = handleZodError(
-        req,
-        reviewSchema
-    );
+    const data = handleZodError(req, next, reviewSchema);
+    if (!data) return;
 
+    const { userId, productId, reviewMessage, reviewValue } = data;
     const order = await Order.findOne({
         userId,
         "cartItems.productId": productId,

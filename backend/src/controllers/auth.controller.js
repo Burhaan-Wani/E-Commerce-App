@@ -7,7 +7,9 @@ const handleZodError = require("../utils/zod/zodError");
 const User = require("../models/user.model");
 
 exports.signup = catchAsync(async function (req, res, next) {
-    const { userName, email, password } = handleZodError(req, signupSchema);
+    const data = handleZodError(req, next, signupSchema);
+    if (!data) return;
+    const { userName, email, password } = data;
 
     const existsUser = await User.findOne({ email });
     if (existsUser) {
@@ -32,8 +34,10 @@ exports.signup = catchAsync(async function (req, res, next) {
 });
 
 exports.login = catchAsync(async function (req, res, next) {
-    const { email, password } = handleZodError(req, loginSchema);
+    const data = handleZodError(req, next, loginSchema);
+    if (!data) return;
 
+    const { email, password } = data;
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
         return next(new AppError(400, "User with this email doesn't exists"));
