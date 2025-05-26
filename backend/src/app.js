@@ -8,7 +8,9 @@ const featureRoutes = require("./routes/feature.routes");
 const addressRoutes = require("./routes/address.routes");
 const productRoutes = require("./routes/product.routes");
 const reviewRoutes = require("./routes/review.routes");
-const adminRoutes = require("./routes/admin.routes");
+const cartRoutes = require("./routes/cart.routes");
+const adminProductRoutes = require("./routes/admin.routes");
+const adminOrderRoutes = require("./routes/adminOrder.routes");
 const globalErrorHandler = require("./controllers/error.controller");
 
 // MIDDLEWARES
@@ -35,7 +37,9 @@ app.use("/api/v1/feature", featureRoutes);
 app.use("/api/v1/address", addressRoutes);
 app.use("/api/v1/reviews", reviewRoutes);
 app.use("/api/v1/products", productRoutes);
-app.use("/api/v1/admin/products", adminRoutes);
+app.use("/api/v1/cart", cartRoutes);
+app.use("/api/v1/admin/products", adminProductRoutes);
+app.use("/api/v1/admin/orders", adminOrderRoutes);
 
 // ERROR HANDLING MIDDLEWARE
 app.use(globalErrorHandler);
